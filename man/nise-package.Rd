@@ -4,8 +4,12 @@
 \name{nise-package}
 \alias{nise}
 \alias{nise-package}
-\title{nise: What the Package Does (Title Case)}
+\title{nise: Making the use of NSE in nested function calls fun!}
 \description{
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+Functionality to programmatically leverage NSE within nested function calls without having to worry about "type casting" the supplied argument values/types
+}
+\author{
+\strong{Maintainer}: Janko Thyson \email{janko@rappster.io}
+
 }
 \keyword{internal}

@@ -145,6 +145,7 @@ data_lst %>% bar_list(b, rlang::quo(a), "color", col_d_enquo, col_c)
 rlang::sym("color") %>% handle_nse_name()
 rlang::quo(color) %>% handle_nse_name()
 "color" %>% handle_nse_name()
+character() %>% handle_nse_name()
 
 tmp <- rlang::sym("color")
 col <- rlang::enquo(tmp)
@@ -159,6 +160,9 @@ var <- rlang::quo(color)
 var %>% handle_nse_name()
 
 var <- "color" 
+var %>% handle_nse_name()
+
+var <- character()
 var %>% handle_nse_name()
 
 tmp <- rlang::sym("color")

@@ -200,6 +200,8 @@ rlang::quo(color) %>% handle_nse_name()
 #> color
 "color" %>% handle_nse_name()
 #> color
+character() %>% handle_nse_name()
+#> character(0)
 
 tmp <- rlang::sym("color")
 col <- rlang::enquo(tmp)
@@ -219,6 +221,10 @@ var %>% handle_nse_name()
 var <- "color" 
 var %>% handle_nse_name()
 #> color
+
+var <- character()
+var %>% handle_nse_name()
+#> character(0)
 
 tmp <- rlang::sym("color")
 var <- rlang::enquo(tmp)

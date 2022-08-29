@@ -3,7 +3,7 @@
 #' @param x [[character] or [name] or [quosure]]
 #' @param env [[environment]] Caller environment
 #'
-#' @return
+#' @return [name] or `character()` in case `x` was `character()`
 #' @export
 #' @examples
 #' data_tbl <- tibble::tribble(
@@ -42,6 +42,14 @@ handle_nse_name <- function(
             stringr::str_remove_all("'")
     }
     # Works but seems very inefficient -> check if there's something better!
+    # Essentially, I would need a way to call 'rlang::enquo()' "after the fact",
+    # i.e. in the enclosing environment/frame. Something like
+    # 'withr::with_environment(<frame>, rlang::enquo(x))'`- which doesn't work
+
+    # Early exit
+    if (!length(value_quo)) {
+        return(value_quo)
+    }
 
     if (inherits(value_quo, "character")) {
         value_quo %>% rlang::sym()
@@ -53,6 +61,9 @@ handle_nse_name <- function(
             if (res %>% rlang::is_quosure()) {
                 res %>% rlang::quo_squash()
             } else {
+                if (!length(res)) {
+                    return(res)
+                }
                 res %>% rlang::sym()
             }
         }

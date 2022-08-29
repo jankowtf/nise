@@ -11,6 +11,9 @@ handle_nse_name(x, env = rlang::caller_env())
 
 \item{env}{[\link{environment}] Caller environment}
 }
+\value{
+\link{name} or \code{character()} in case \code{x} was \code{character()}
+}
 \description{
 Handle NSE name
 }
